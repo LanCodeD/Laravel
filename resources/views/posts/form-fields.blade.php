@@ -1,19 +1,12 @@
-<label>
-    {{__('Title')}} <br>
-    <input name="title" type="text" value="{{old('title', $post->title)}}">
-    @error('title')
-        <br/>
-    <small style="color:red">{{$message}}</small>
-    @enderror
-</label> <br>
+<div>
+    <x-input-label for="title" :value="__('Title')" />
+    <x-text-input class="block w-full mt-1" id="title" name="title" type="text" value="{{old('title', $post->title)}}"/>
+        <x-input-error :messages="$errors->get('title')" class="mt-2"/>
+</div>
 
-<label>
-    {{__('Body')}} <br>
-    <textarea name="body">{{old('body', $post->body)}}</textarea>
-    @error('body')
-        <br/>
-    <small style="color:red">{{$message}}</small>
-@enderror
-</label> <br>
-<button type="submit">Guardar cambios</button>
-<br>
+<div>
+    <x-input-label for="body" :value="__('Body')" />
+    <x-textarea id="body" class="block w-full mt-1" name="body">{{ old('body', $post->body) }}</x-textarea>
+    <x-input-error :messages="$errors->get('body')" class="mt-2" />
+</div>
+

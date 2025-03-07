@@ -7,8 +7,12 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class PostController
+class PostController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except('index','show');
+    }
     public function __invoke()
     {
         //$posts = DB::table('posts')->get(); Antes de crear modelos
